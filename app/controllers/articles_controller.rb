@@ -1,6 +1,12 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:edit, :update, :show, :destroy] 
     
+    def index
+        # @articles = Article.all
+        # Listing article with pagination
+        @articles = Article.paginate(page: params[:page], per_page: 3)
+    end
+
     def new
         @article = Article.new
     end
@@ -8,9 +14,13 @@ class ArticlesController < ApplicationController
     def edit
     end
 
-    def index
-        @articles = Article.all
-    end
+    def search
+        if params[:search].blank?
+            @articles = Article.all
+        else
+            @articles = Article.search(params)
+        end
+    end 
 
     def create
         #debugger

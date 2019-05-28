@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get 'welcome/about', to: 'welcome#about'
   
-  resources :articles
+  resources :articles do
+    collection do
+      get :search
+    end
+  end
+
   get 'signup', to: 'users#new'
   # post 'users', to: 'users#create'
   resources :users, except:  [:new]
