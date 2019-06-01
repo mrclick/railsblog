@@ -1,0 +1,10 @@
+<% if cookies[:saved_subcriber] %>
+    Thanks for signing up!
+<% else %>
+    <h1> Sign up for my newsletter here!</h1>
+    <%= form_tag newsletters_path, class: "", method: :post do %>
+        <%= text_field_tag :name, nil, placeholder: "Name", class: "form-control mb-4" %>
+        <%= email_field_tag :email, nil, placeholder: "Name", class: "form-control mb-4" %>        
+        <%= submit_tag "Subscribe", class: "btn btn-default" %>
+    <% end %>
+<% end %>

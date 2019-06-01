@@ -1,0 +1,11 @@
+<% if cookies[:saved_subcriber] %>
+    Thanks for signing up!
+<% else %>
+    <h1> Sign up for my newsletter here!</h1>h1>
+    <%= form_for @afrisubscriber do |f| %>
+        <%= f.text_field :name, placeholder: "Name" %>
+        <%= f.email_field :email, placeholder: "Email" %>
+        <%= f.select :source, ["Search Engine", "Social Media", "Friends", "Other"]%>
+        <%= f.submit %>
+    <% end %>
+<% end %>
